@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "automated-semver-backend"
+version = "0.1.0"
+description = "Test Django REST API with automated semantic versioning"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Django>=4.2,<5.0",
+    "djangorestframework>=3.14.0",
+    "django-cors-headers>=4.3.0",
+    "gunicorn>=21.2.0",
+]
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+version_variables = ["api/__init__.py:__version__"]
+branch = "main"
+upload_to_pypi = false
+upload_to_release = true
+build_command = "pip install -r requirements.txt"
+commit_message = "chore(release): {version} [skip ci]"
+
+[tool.semantic_release.changelog]
+exclude_commit_patterns = []
+
+[tool.semantic_release.branches.main]
+match = "main"
+prerelease = false
+
