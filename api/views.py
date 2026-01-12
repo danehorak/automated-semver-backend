@@ -20,7 +20,7 @@ class CogViewSet(viewsets.ModelViewSet):
 
 @api_view(['GET'])
 def version_view(request):
-    """Return the API version."""
+    """Return the API version with CORS support."""
     return Response({
         'version': __version__,
         'api': 'automated-semver-backend'
